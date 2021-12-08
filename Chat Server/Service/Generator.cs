@@ -12,5 +12,10 @@ namespace Chat_Server.Service
             builder.Append(Guid.NewGuid().ToString());
             return builder.ToString();
         }
+
+        public static long GenerateCompanyId()
+        {
+            return new Random().NextInt64(long.MinValue, -10000000);
+        }
     }
 }

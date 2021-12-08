@@ -16,7 +16,6 @@ namespace Chat_Server.Repository
         {
             
             chatContext.Tokens.Add(new Tokens() { Token = token,UserId=user.Id });
-            chatContext.Users.Update(user);
             await chatContext.SaveChangesAsync();
         }
 
@@ -24,7 +23,6 @@ namespace Chat_Server.Repository
         {
             var user = await GetUser(userid);
             chatContext.Tokens.Add(new Tokens() { Token = token, UserId = user.Id });
-            chatContext.Users.Update(user);
             await chatContext.SaveChangesAsync();
         }
 
@@ -42,8 +40,13 @@ namespace Chat_Server.Repository
 
         public async Task<List<User>> GetCompanyUsers(int id)
         {
-            var users = chatContext.Users.Where(c=>c.CompanyId==id).ToList();
-            return users;
+            if (id < 0)
+            {
+                var users = chatContext.Users.Where(c => c.CompanyId == id).ToList();
+                return users;
+            }
+
+            return new();
         }
 
         public async Task<User> GetUser(int id)

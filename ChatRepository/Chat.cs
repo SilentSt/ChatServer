@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChatRepository
 {
-    internal class Chat
+    public class Chat
     {
         public long ChatId { get; set; }
         public int UserId { get; set; }
