@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<UserRepository>();
+builder.Services.AddSingleton<MessageRepository>();
 //builder.Host.ConfigureWebHost(c => c.UseUrls("https://176.212.39.172:25565"));
 
 var app = builder.Build();

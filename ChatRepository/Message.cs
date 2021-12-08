@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ChatRepository
 {
-    public class History
+    public class Message
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string From { get; set; }
+        public int FromId { get; set; }
         [Required]
-        public string To { get; set; }
+        public int ToId { get; set; }
         [Required]
         public DateTime UtcTime { get; set; }
-        public string Reply { get; set; }
+        public string? Reply { get; set; }
     }
 }
