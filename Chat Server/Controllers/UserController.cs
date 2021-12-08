@@ -43,7 +43,10 @@ namespace Chat_Server.Controllers
             List<ComUser> usersList = new List<ComUser>();
             foreach (var us in users)
             {
-                usersList.Add(new ComUser(){id=us.Id,nick = us.NickName});
+                if (us.Id != user.Id)
+                {
+                    usersList.Add(new ComUser() { id = us.Id, nick = us.NickName });
+                }
             }
 
             return new ContentResult() { Content = JArray.FromObject(usersList).ToString(), StatusCode = 200 };
