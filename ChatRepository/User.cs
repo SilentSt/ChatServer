@@ -15,7 +15,6 @@ namespace ChatRepository
         [Key]
         public int Id { get; set; }
         public string NickName { get; set; }
-        [Key]
         public string Login { get; set; }
         public string Password { get; set; }
         [Newtonsoft.Json.JsonIgnore]
