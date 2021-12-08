@@ -17,6 +17,9 @@ namespace ChatRepository
         public string NickName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public int CompanyId { get; set; }
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual Company Company { get; set; }
         [Newtonsoft.Json.JsonIgnore]
         public virtual ICollection<Tokens> Tokens { get; set; }
 

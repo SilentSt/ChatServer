@@ -6,7 +6,7 @@ namespace Chat_Server.Repository.Interface
     {
         public Task<User> GetUser(int id);
         public Task<User> GetUser(string token);
-        public Task<List<User>> GetAllUsers();
+        public Task<List<User>> GetCompanyUsers(int id);
         public Task<List<User>> FindUsers(string nickname);
         public Task<User> FindUser(string nickname);
         public Task<User> Login(string username, string password);

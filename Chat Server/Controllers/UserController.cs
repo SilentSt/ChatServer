@@ -1,4 +1,5 @@
-﻿using Chat_Server.BModels;
+﻿using System.Text.Json.Nodes;
+using Chat_Server.BModels;
 using Chat_Server.Repository;
 using Chat_Server.Repository.Interface;
 using Chat_Server.Service;
@@ -34,5 +35,18 @@ namespace Chat_Server.Controllers
             return BadRequest();
         }
 
+        [HttpPost("company")]
+        public async Task<IActionResult> Company([FromBody] string token)
+        {
+            var user = await userdata.GetUser(token);
+            var users = await userdata.GetCompanyUsers(user.CompanyId);
+            List<ComUser> usersList = new List<ComUser>();
+            foreach (var us in users)
+            {
+                usersList.Add(new ComUser(){id=us.Id,nick = us.NickName});
+            }
+
+            return new ContentResult() { Content = JArray.FromObject(usersList).ToString(), StatusCode = 200 };
+        }
     }
 }

@@ -40,9 +40,9 @@ namespace Chat_Server.Repository
             return users;
         }
 
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<User>> GetCompanyUsers(int id)
         {
-            var users = chatContext.Users.ToList();
+            var users = chatContext.Users.Where(c=>c.CompanyId==id).ToList();
             return users;
         }
 
