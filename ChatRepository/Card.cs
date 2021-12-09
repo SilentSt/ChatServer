@@ -14,7 +14,7 @@ namespace ChatRepository
         public string Title { get; set; }
         public string Description { get; set; }
         public string State { get; set; }
-        public int BoardId { get; set; }
-        public DateTime UtcDeadline { get; set; }
+        public long BoardId { get; set; }
+        public DateTime Deadline { get; set; }
     }
 }

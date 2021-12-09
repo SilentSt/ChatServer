@@ -35,7 +35,7 @@ namespace Chat_Server.Controllers
             return BadRequest();
         }
 
-        [HttpPost("company")]
+        [HttpPost("companyusers")]
         public async Task<IActionResult> Company([FromBody] string token)
         {
             var user = await userdata.GetUser(token);

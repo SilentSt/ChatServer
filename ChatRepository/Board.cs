@@ -11,9 +11,9 @@ namespace ChatRepository
     public class Board
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
-        public int RootId { get; set; }
+        public long RootId { get; set; }
         public virtual List<Card> Cards { get; set; }
     }
 }
