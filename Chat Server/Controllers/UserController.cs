@@ -79,7 +79,7 @@ namespace Chat_Server.Controllers
             {
                 var user = await userdata.GetUser(token);
                 if (user.Id == 0) return NotFound();
-                var company = userdata.GetFullCompany(user.CompanyId);
+                var company = await userdata.GetFullCompany(user.CompanyId);
                 return new ContentResult() { Content = JObject.FromObject(company).ToString(), StatusCode = 200 };
             }
             catch (Exception e)
