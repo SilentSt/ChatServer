@@ -38,7 +38,7 @@ namespace Chat_Server.Repository
             return users;
         }
 
-        public async Task<List<User>> GetCompanyUsers(int id)
+        public async Task<List<User>> GetCompanyUsers(long id)
         {
             if (id < 0)
             {
@@ -68,7 +68,7 @@ namespace Chat_Server.Repository
 
         public async Task<User> Login(string username, string password)
         {
-            var user = chatContext.Users.FirstOrDefault(u => u.Login == username && u.Password == password);
+            var user = chatContext.Users.FirstOrDefault(u => u.Login == username&& u.CompanyId<0 && u.Password == password);
             return user ?? new User() { Id = 0 };
         }
     }
