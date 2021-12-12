@@ -1,6 +1,7 @@
 ﻿using Chat_Server.Repository.Interface;
 
 using ChatRepository;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
@@ -8,7 +9,7 @@ namespace Chat_Server.Repository
 {
     public class UserRepository : IUserRepository
     {
-        ChatContext chatContext = new ();
+        ChatContext chatContext = new();
         public UserRepository()
         {
             chatContext.Database.EnsureCreated();
@@ -16,7 +17,7 @@ namespace Chat_Server.Repository
 
         public async Task AddToken(User user, string token)
         {
-            chatContext.Tokens.Add(new Tokens() { Token = token,UserId=user.Id });
+            chatContext.Tokens.Add(new Tokens() { Token = token, UserId = user.Id });
             await chatContext.SaveChangesAsync();
         }
 
@@ -30,12 +31,12 @@ namespace Chat_Server.Repository
         public async Task<User> FindUser(string nickname)
         {
             var user = chatContext.Users.FirstOrDefault(u => u.NickName.Contains(nickname));
-            return user ?? new User() { Id=0};
+            return user ?? new User() { Id = 0 };
         }
 
         public async Task<List<User>> FindUsers(string nickname)
         {
-            var users = chatContext.Users.Where(u=>u.NickName.Contains(nickname)).ToList();
+            var users = chatContext.Users.Where(u => u.NickName.Contains(nickname)).ToList();
             return users;
         }
 
@@ -52,9 +53,9 @@ namespace Chat_Server.Repository
         public async Task<Company> GetFullCompany(long id)
         {
             if (id > 0) throw new Exception("403");
-            var company = await chatContext.Companys.FirstOrDefaultAsync(c=>c.Id==id);
+            var company = await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id);
             var boards = (await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id)).Boards;
-            var cards = ((await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id)).Boards).Select(x=>x.Cards);
+            var cards = ((await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id)).Boards)?.Select(x => x?.Cards);
             return company;
         }
 
@@ -71,7 +72,7 @@ namespace Chat_Server.Repository
 
         public async Task<User> Login(string username, string password)
         {
-            var user = chatContext.Users.FirstOrDefault(u => u.Login == username&& u.CompanyId<0 && u.Password == password);
+            var user = chatContext.Users.FirstOrDefault(u => u.Login == username && u.CompanyId < 0 && u.Password == password);
             return user ?? new User() { Id = 0 };
         }
     }
