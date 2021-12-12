@@ -1,6 +1,7 @@
 ﻿using Chat_Server.Repository.Interface;
 
 using ChatRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat_Server.Repository
 {
@@ -45,6 +46,13 @@ namespace Chat_Server.Repository
                 return users;
             }
             return new();
+        }
+
+        public async Task<Company> GetFullCompany(long id)
+        {
+            if (id > 0) throw new Exception("403");
+            var company = await chatContext.Companys.FirstOrDefaultAsync(c=>c.Id==id);
+            return company;
         }
 
         public async Task<User> GetUser(int id)

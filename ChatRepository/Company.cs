@@ -10,8 +10,9 @@ namespace ChatRepository
     public class Company
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public virtual List<User> Users { get; set; }
+        public virtual List<Board> Boards { get; set; }
     }
 }

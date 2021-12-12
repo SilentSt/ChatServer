@@ -24,8 +24,6 @@ namespace Chat_Server.Controllers
         {
             try
             {
-
-
                 var user = await userdata.GetUser(board.token);
                 long boardid = 0;
                 if (board.priv)

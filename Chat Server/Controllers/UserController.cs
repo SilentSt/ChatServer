@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Nodes;
+
 using Chat_Server.BModels;
 using Chat_Server.Repository;
 using Chat_Server.Repository.Interface;
@@ -25,31 +26,62 @@ namespace Chat_Server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Auth auth)
         {
-            var user = await userdata.Login(auth.login, auth.password);
-            if (user.Id>0){
-                var token = Generator.GenerateToken();
-                await userdata.AddToken(user, token);
-                var log = new Login() { nickname = user.NickName,token=token };
-                return new ContentResult(){Content= JObject.FromObject(log).ToString(), StatusCode=200};
+            try
+            {
+                var user = await userdata.Login(auth.login, auth.password);
+                if (user.Id > 0)
+                {
+                    var token = Generator.GenerateToken();
+                    await userdata.AddToken(user, token);
+                    var log = new Login() { nickname = user.NickName, token = token };
+                    return new ContentResult() { Content = JObject.FromObject(log).ToString(), StatusCode = 200 };
+                }
+                return NotFound();
             }
-            return BadRequest();
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost("companyusers")]
         public async Task<IActionResult> Company([FromBody] string token)
         {
-            var user = await userdata.GetUser(token);
-            var users = await userdata.GetCompanyUsers(user.CompanyId);
-            List<ComUser> usersList = new List<ComUser>();
-            foreach (var us in users)
+            try
             {
-                if (us.Id != user.Id)
+                var user = await userdata.GetUser(token);
+                if (user.Id == 0) return NotFound();
+                var users = await userdata.GetCompanyUsers(user.CompanyId);
+                List<ComUser> usersList = new List<ComUser>();
+                foreach (var us in users)
                 {
-                    usersList.Add(new ComUser() { id = us.Id, nick = us.NickName });
+                    if (us.Id != user.Id)
+                    {
+                        usersList.Add(new ComUser() { id = us.Id, nick = us.NickName });
+                    }
                 }
+                return new ContentResult() { Content = JArray.FromObject(usersList).ToString(), StatusCode = 200 };
             }
+            catch
+            {
+                return BadRequest();
+            }
+        }
 
-            return new ContentResult() { Content = JArray.FromObject(usersList).ToString(), StatusCode = 200 };
+        [HttpPost("fullcompany")]
+        public async Task<IActionResult> FullCompany([FromBody] string token)
+        {
+            try
+            {
+                var user = await userdata.GetUser(token);
+                if (user.Id == 0) return NotFound();
+                var company = userdata.GetFullCompany(user.CompanyId);
+                return new ContentResult() { Content = JObject.FromObject(company).ToString(), StatusCode = 200 };
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }
