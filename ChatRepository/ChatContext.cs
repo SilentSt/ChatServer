@@ -6,7 +6,7 @@ namespace ChatRepository
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=217.25.89.68;database=drag;user=sDether;password=1namQfeg1_;");
+            optionsBuilder.UseMySQL("server=localhost;database=drag;user=sDether;password=1namQfeg1_;");
             base.OnConfiguring(optionsBuilder);
         }
 
