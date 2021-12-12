@@ -2,6 +2,7 @@
 
 using ChatRepository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Chat_Server.Repository
 {
@@ -52,6 +53,8 @@ namespace Chat_Server.Repository
         {
             if (id > 0) throw new Exception("403");
             var company = await chatContext.Companys.FirstOrDefaultAsync(c=>c.Id==id);
+            var boards = (await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id)).Boards;
+            var cards = ((await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id)).Boards).Select(x=>x.Cards);
             return company;
         }
 
