@@ -26,8 +26,8 @@ namespace Chat_Server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Auth auth)
         {
-            //try
-            //{
+            try
+            {
                 var user = await userdata.Login(auth.login, auth.password);
                 if (user.Id > 0)
                 {
@@ -37,13 +37,13 @@ namespace Chat_Server.Controllers
                     return new ContentResult() { Content = JObject.FromObject(log).ToString(), StatusCode = 200 };
                 }
                 return NotFound();
-            //}
-            //catch(Exception e)
-            //{
-            //    Console.WriteLine(e.ToString());
-            //    Console.WriteLine(e.Message);
-            //    return BadRequest();
-            //}
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
         }
 
         [HttpPost("companyusers")]
