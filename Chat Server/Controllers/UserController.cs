@@ -38,8 +38,9 @@ namespace Chat_Server.Controllers
                 }
                 return NotFound();
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }
@@ -62,8 +63,9 @@ namespace Chat_Server.Controllers
                 }
                 return new ContentResult() { Content = JArray.FromObject(usersList).ToString(), StatusCode = 200 };
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }
@@ -78,8 +80,9 @@ namespace Chat_Server.Controllers
                 var company = userdata.GetFullCompany(user.CompanyId);
                 return new ContentResult() { Content = JObject.FromObject(company).ToString(), StatusCode = 200 };
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }

@@ -38,8 +38,9 @@ namespace Chat_Server.Controllers
                 if (boardid == 0) return NotFound();
                 return new ContentResult() { Content = boardid.ToString(), StatusCode = 200 };
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }
@@ -55,6 +56,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }
@@ -72,6 +74,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }
@@ -87,6 +90,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return BadRequest();
             }
         }
