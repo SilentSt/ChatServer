@@ -13,6 +13,7 @@ namespace Chat_Server.Repository
         public UserRepository()
         {
             chatContext.Database.EnsureCreated();
+            
         }
 
         public async Task AddToken(User user, string token)
@@ -53,9 +54,8 @@ namespace Chat_Server.Repository
         public async Task<Company> GetFullCompany(long id)
         {
             if (id > 0) throw new Exception("403");
-
-            var cards = ((await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id)).Boards)?.Select(x => x?.Cards);
-            var company = await chatContext.Companys.FirstOrDefaultAsync(c => c.Id == id);
+            
+            var company = await chatContext.Companys.Include("Boards").FirstOrDefaultAsync(c => c.Id == id);
             return company;
         }
 
