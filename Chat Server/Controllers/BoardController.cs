@@ -40,6 +40,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 Console.WriteLine(e.Message);
                 return BadRequest();
             }
@@ -56,6 +57,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 Console.WriteLine(e.Message);
                 return BadRequest();
             }
@@ -74,6 +76,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 Console.WriteLine(e.Message);
                 return BadRequest();
             }
@@ -90,6 +93,7 @@ namespace Chat_Server.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 Console.WriteLine(e.Message);
                 return BadRequest();
             }
