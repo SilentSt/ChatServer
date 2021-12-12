@@ -21,7 +21,15 @@ namespace Chat_Server.Repository
         public async Task<long> CreateBoard(long rootid, string title)
         {
             var id = Generator.Generate64Id();
-            var board = new Board() { Id = id, RootId = rootid, Title = title };
+            Board board = null;
+            if (rootid < 0)
+            {
+                board = new Board() { Id = id, CompanyId = rootid, Title = title };
+            }
+            else
+            {
+                board = new Board() { Id = id, UserId = (int)rootid, Title = title };
+            }
             await chatContext.Boards.AddAsync(board);
             await chatContext.SaveChangesAsync();
             return id;

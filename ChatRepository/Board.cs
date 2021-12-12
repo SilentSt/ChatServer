@@ -13,7 +13,8 @@ namespace ChatRepository
         [Key]
         public long Id { get; set; }
         public string Title { get; set; }
-        public long RootId { get; set; }
+        public long? CompanyId { get; set; }
+        public int? UserId { get; set; }
         public virtual List<Card> Cards { get; set; }
     }
 }

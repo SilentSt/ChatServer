@@ -25,14 +25,14 @@ namespace Chat_Server.Controllers
             try
             {
                 var user = await userdata.GetUser(board.token);
-                long boardid = 0;
+                long boardid;
                 if (board.priv)
                 {
                     boardid = await boarddata.CreateBoard(user.CompanyId, board.title);
                 }
                 else
                 {
-                    boardid = await boarddata.CreateBoard(user.CompanyId, board.title);
+                    boardid = await boarddata.CreateBoard(user.Id, board.title);
                 }
 
                 if (boardid == 0) return NotFound();
