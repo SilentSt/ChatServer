@@ -55,7 +55,7 @@ namespace Chat_Server.Repository
         {
             if (id > 0) throw new Exception("403");
             
-            var company = await chatContext.Companys.Include("Boards").Include("Cards").FirstOrDefaultAsync(c => c.Id == id);
+            var company = await chatContext.Companys.Include("Boards").Include("Boards.Cards").FirstOrDefaultAsync(c => c.Id == id);
             return company;
         }
 
