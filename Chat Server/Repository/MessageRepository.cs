@@ -1,5 +1,6 @@
 ﻿using Chat_Server.Repository.Interface;
 using ChatRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat_Server.Repository
 {
@@ -11,7 +12,7 @@ namespace Chat_Server.Repository
         {
             var messages = chatContext.History.Where(x => x.FromId == userid || x.ToId == userid)
                 .Where(y => y.FromId == friendid || y.ToId == friendid).Skip(skip).Take(take);
-            return messages.ToList();
+            return await messages.ToListAsync();
         }
 
         public async Task SendMessage(int fromid, int toid, string text, string? reply = null)
