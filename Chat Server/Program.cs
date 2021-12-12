@@ -14,7 +14,7 @@ builder.Services.AddSingleton<BoardRepository>();
 //builder.Host.ConfigureWebHost(c => c.UseUrls("https://176.212.39.172:25565"));
 
 var app = builder.Build();
-//app.Urls.Add("https://localhost:14875");
+app.Urls.Add("https://localhost:14875");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
