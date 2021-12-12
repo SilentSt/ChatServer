@@ -22,9 +22,9 @@ namespace Chat_Server.Service
         {
             return new Random().NextInt64(100000000, long.MaxValue)+((long)DateTime.Now.Millisecond*909909);
         }
-        public static ulong GenerateU64Id()
+        public static long GenerateU64Id()
         {
-            return (ulong)new Random().NextInt64(100000000, long.MaxValue) + ((ulong)DateTime.Now.Millisecond * 9409079);
+            return (long)new Random().NextInt64(100000000, long.MaxValue) + ((long)DateTime.Now.Millisecond * 9409079);
         }
     }
 }

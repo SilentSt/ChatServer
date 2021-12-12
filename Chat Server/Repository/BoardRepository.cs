@@ -35,9 +35,9 @@ namespace Chat_Server.Repository
             return id;
         }
 
-        public async Task<ulong> CreateCard(long boardid, string title, string description, string state, DateTime deadline)
+        public async Task<long> CreateCard(long boardid, string title, string description, string state, DateTime deadline)
         {
-            var id = Generator.GenerateU64Id();
+            Int64 id = Generator.GenerateU64Id();
             var card = new Card()
                 { Id = id ,BoardId = boardid, Title = title, Description = description, State = state, Deadline = deadline };
             await chatContext.Cards.AddAsync(card);
@@ -45,7 +45,7 @@ namespace Chat_Server.Repository
             return id;
         }
 
-        public async Task<Card> UpdateCard(ulong cardid, string? title, string? description, string? state, DateTime? deadline)
+        public async Task<Card> UpdateCard(long cardid, string? title, string? description, string? state, DateTime? deadline)
         {
             var card = await GetCard(cardid);
             if (card.Id == 0) throw new Exception("404");
@@ -58,7 +58,7 @@ namespace Chat_Server.Repository
             return card;
         }
 
-        public async Task DeleteCard(ulong cardid)
+        public async Task DeleteCard(long cardid)
         {
             var card = await GetCard(cardid);
             if (card.Id == 0) throw new Exception("404");
@@ -66,7 +66,7 @@ namespace Chat_Server.Repository
             await chatContext.SaveChangesAsync();
         }
 
-        public async Task<ulong> CloneCard(ulong cardid, long newboardid)
+        public async Task<long> CloneCard(long cardid, long newboardid)
         {
             var card = await GetCard(cardid);
             card.Id = Generator.GenerateU64Id();
@@ -76,7 +76,7 @@ namespace Chat_Server.Repository
             return card.Id;
         }
 
-        public async Task<Card> GetCard(ulong id)
+        public async Task<Card> GetCard(long id)
         {
             var card = await chatContext.Cards.FirstOrDefaultAsync(x => x.Id == id);
             if (card == null)
