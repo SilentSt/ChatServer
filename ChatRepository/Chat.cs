@@ -10,5 +10,6 @@ namespace ChatRepository
     {
         public long ChatId { get; set; }
         public int UserId { get; set; }
+        public bool Private { get; set; }
     }
 }

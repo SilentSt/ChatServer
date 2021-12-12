@@ -41,6 +41,12 @@ namespace Chat_Server.Repository
             return users;
         }
 
+        public async Task<List<Board>> GetUserBoards(int id)
+        {
+            var boards = await chatContext.Boards.Include("Cards").Where(b => b.UserId == id).ToListAsync();
+            return boards;
+        }
+
         public async Task<List<User>> GetCompanyUsers(long id)
         {
             if (id < 0)

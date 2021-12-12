@@ -16,7 +16,7 @@ namespace ChatRepository
         [Required]
         public int FromId { get; set; }
         [Required]
-        public int ToId { get; set; }
+        public int ChatId { get; set; }
         [Required]
         public DateTime UtcTime { get; set; }
         public string? Reply { get; set; }

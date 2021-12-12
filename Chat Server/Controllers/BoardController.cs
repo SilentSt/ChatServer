@@ -100,6 +100,21 @@ namespace Chat_Server.Controllers
             }
         }
 
+        [HttpPost("deletecard")]
+        public async Task<IActionResult> DeleteCard([FromBody] GBoard board)
+        {
+            try
+            {
+                if ((await userdata.GetUser(board.token)).Id == 0) return NotFound();
+                await boarddata.DeleteCard(board.boardid);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost("updatecard")]
         public async Task<IActionResult> UpdateCard([FromBody]UpCard card)
         {

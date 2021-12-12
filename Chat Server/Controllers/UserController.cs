@@ -89,5 +89,23 @@ namespace Chat_Server.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPost("userboards")]
+        public async Task<IActionResult> UserBoards([FromBody] string token)
+        {
+            try
+            {
+                var user = await userdata.GetUser(token);
+                if (user.Id == 0) return NotFound();
+                var company = await userdata.GetUserBoards(user.Id);
+                return new ContentResult() { Content = JArray.FromObject(company).ToString(), StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
+        }
     }
 }
