@@ -4,6 +4,7 @@ using Chat_Server.Repository.Interface;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Chat_Server.Controllers
 {
@@ -37,6 +38,23 @@ namespace Chat_Server.Controllers
 
                 if (boardid == 0) return NotFound();
                 return new ContentResult() { Content = boardid.ToString(), StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
+        }
+
+        [HttpPost("board")]
+        public async Task<IActionResult> GetBoard(GBoard board)
+        {
+            try
+            {
+                if ((await userdata.GetUser(board.token)).Id == 0) return NotFound();
+                var resboard = await boarddata.GetBoard(board.boardid);
+                return new ContentResult() { Content = JObject.FromObject(resboard).ToString(), StatusCode = 200 };
             }
             catch (Exception e)
             {

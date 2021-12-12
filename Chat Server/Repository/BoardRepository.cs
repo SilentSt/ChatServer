@@ -10,7 +10,7 @@ namespace Chat_Server.Repository
         ChatContext chatContext = new ();
         public async Task<Board> GetBoard(long id)
         {
-            var board = await chatContext.Boards.FirstOrDefaultAsync(x => x.Id == id);
+            var board = await chatContext.Boards.Include("Cards").FirstOrDefaultAsync(x => x.Id == id);
             if (board == null)
             {
                 board = new Board() { Id = 0 };
