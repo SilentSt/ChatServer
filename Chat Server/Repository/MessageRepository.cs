@@ -1,4 +1,5 @@
-﻿using Chat_Server.BModels.Boards;
+﻿using Chat_Server.BModels;
+using Chat_Server.BModels.Boards;
 using Chat_Server.Repository.Interface;
 using Chat_Server.Service;
 using ChatRepository;
@@ -42,7 +43,11 @@ namespace Chat_Server.Repository
             foreach (var chat in chats)
             {
                 rchats.Add(
-                    new RChat(){ChatId = chat.ChatId,Name = chat.Name,UsersId = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=>x.UserId).ToList(),Private = chat.Private});
+                    new RChat(){ChatId = chat.ChatId,Name = chat.Name,UsersId = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=> new ComUser()
+                    {
+                        nick = chatContext.Users.First(t => t.Id == x.Id).NickName,
+                        id = x.UserId
+                    }).ToList(),Private = chat.Private});
             }
             return rchats;
         }

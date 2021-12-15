@@ -4,7 +4,7 @@
     {
         public long ChatId { get; set; }
         public string? Name { get; set; }
-        public List<int> UsersId { get; set; }
+        public List<ComUser> UsersId { get; set; }
         public bool Private { get; set; }
     }
 }
