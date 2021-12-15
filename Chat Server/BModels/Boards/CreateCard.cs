@@ -1,6 +1,6 @@
 ﻿namespace Chat_Server.BModels.Boards
 {
-    public class InCard
+    public class CreateCard
     {
         public string token { get; set; }
         public string title { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Chat_Server.BModels.Boards
 {
-    public class RChat
+    public class UserChats
     {
         public long chatid { get; set; }
         public string? name { get; set; }

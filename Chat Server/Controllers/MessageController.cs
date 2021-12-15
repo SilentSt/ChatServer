@@ -24,7 +24,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("message")]
-        public async Task<IActionResult> Message([FromBody] InMessage message)
+        public async Task<IActionResult> Message([FromBody] CreateMessage message)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("privatechat")]
-        public async Task<IActionResult> CreatePrivateChat([FromBody] InPrivateChat chat)
+        public async Task<IActionResult> CreatePrivateChat([FromBody] CreatePrivateChat chat)
         {
 
             try
@@ -61,7 +61,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("chat")]
-        public async Task<IActionResult> CreateChat([FromBody] InChat chat)
+        public async Task<IActionResult> CreateChat([FromBody] CreateChat chat)
         {
 
             try
@@ -81,7 +81,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("addusertochat")]
-        public async Task<IActionResult> AddUserToChat([FromBody] AChat chat)
+        public async Task<IActionResult> AddUserToChat([FromBody] AddUserToChat chat)
         {
             try
             {

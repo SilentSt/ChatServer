@@ -10,7 +10,7 @@ namespace Chat_Server.Repository.Interface
         public Task<long> CreateChat(int userid, string name);
         public Task<List<Message>> GetPrivateMessages(int userid, int friendid, int skip=0,int take=25);
         public Task<List<Message>> GetChatMessages(int userid, int chatid, int skip = 0, int take = 25);
-        public Task<List<RChat>> GetChats(int userid);
+        public Task<List<UserChats>> GetChats(int userid);
         public Task AddUserToChat(int userid, long chatid);
     }
 }

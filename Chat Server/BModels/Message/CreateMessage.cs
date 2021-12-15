@@ -2,7 +2,7 @@
 
 namespace Chat_Server.BModels
 {
-    public class InMessage
+    public class CreateMessage
     {
         [JsonRequired]
         public string token { get; set; }

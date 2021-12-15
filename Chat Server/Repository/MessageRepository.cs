@@ -36,14 +36,14 @@ namespace Chat_Server.Repository
             throw new Exception("403");
         }
 
-        public async Task<List<RChat>> GetChats(int userid)
+        public async Task<List<UserChats>> GetChats(int userid)
         {
             var chats = await chatContext.Chats.Where(c => c.UserId == userid).ToListAsync();
-            List<RChat> rchats = new List<RChat>();
+            List<UserChats> rchats = new List<UserChats>();
             foreach (var chat in chats)
             {
                 rchats.Add(
-                    new RChat(){chatid = chat.ChatId,name = chat.Name,users = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=> new ComUser()
+                    new UserChats(){chatid = chat.ChatId,name = chat.Name,users = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=> new ComUser()
                     {
                         nick = chatContext.Users.First(t => t.Id == x.Id).NickName,
                         id = x.UserId

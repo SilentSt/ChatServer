@@ -21,7 +21,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("board")]
-        public async Task<IActionResult> CreateBoard([FromBody] InBoard board)
+        public async Task<IActionResult> CreateBoard([FromBody] CreateBoard board)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("getboard")]
-        public async Task<IActionResult> GetBoard(GBoard board)
+        public async Task<IActionResult> GetBoard(GetBoard board)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("updateboard")]
-        public async Task<IActionResult> UpdateBoard([FromBody] UpBoard board)
+        public async Task<IActionResult> UpdateBoard([FromBody] UpdateBoard board)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("card")]
-        public async Task<IActionResult> CreateCard([FromBody] InCard card)
+        public async Task<IActionResult> CreateCard([FromBody] CreateCard card)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("deletecard")]
-        public async Task<IActionResult> DeleteCard([FromBody] DCard card)
+        public async Task<IActionResult> DeleteCard([FromBody] DeleteCard card)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("updatecard")]
-        public async Task<IActionResult> UpdateCard([FromBody]UpCard card)
+        public async Task<IActionResult> UpdateCard([FromBody]UpdateCard card)
         {
             try
             {

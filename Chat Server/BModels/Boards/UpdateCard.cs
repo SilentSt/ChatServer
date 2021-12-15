@@ -1,6 +1,6 @@
 ﻿namespace Chat_Server.BModels.Boards
 {
-    public class UpCard
+    public class UpdateCard
     {
         public string token { get; set; }
         public long cardid { get; set; }

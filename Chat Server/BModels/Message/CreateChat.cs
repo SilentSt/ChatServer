@@ -1,8 +1,8 @@
 ﻿namespace Chat_Server.BModels.Message
 {
-    public class InPrivateChat
+    public class CreateChat
     {
         public string token { get; set; }
-        public int friend { get; set; }
+        public string name { get; set; }
     }
 }
