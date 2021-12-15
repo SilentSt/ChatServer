@@ -3,5 +3,6 @@
     public class InChat
     {
         public string token { get; set; }
+        public string name { get; set; }
     }
 }

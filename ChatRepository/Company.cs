@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ChatRepository
 {
@@ -12,6 +13,7 @@ namespace ChatRepository
         [Key]
         public long Id { get; set; }
         public string Name { get; set; }
+        [JsonIgnore]
         public virtual List<User> Users { get; set; }
         public virtual List<Board> Boards { get; set; }
     }

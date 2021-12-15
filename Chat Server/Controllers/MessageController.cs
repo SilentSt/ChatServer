@@ -68,7 +68,7 @@ namespace Chat_Server.Controllers
             {
                 var user = await userdata.GetUser(chat.token);
                 if (user.Id == 0) return NotFound();
-                var id = await messagedata.CreateChat(user.Id);
+                var id = await messagedata.CreateChat(user.Id,chat.name);
                 return new ContentResult { Content = id.ToString(), StatusCode = 200 };
             }
             catch (Exception e)

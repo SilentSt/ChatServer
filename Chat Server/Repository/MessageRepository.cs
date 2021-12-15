@@ -1,4 +1,5 @@
-﻿using Chat_Server.Repository.Interface;
+﻿using Chat_Server.BModels.Boards;
+using Chat_Server.Repository.Interface;
 using Chat_Server.Service;
 using ChatRepository;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +10,10 @@ namespace Chat_Server.Repository
     {
         ChatContext chatContext = new ();
 
-        public async Task<long> CreateChat(int userid)
+        public async Task<long> CreateChat(int userid, string name)
         {
             var chatid = Generator.Generate64Id();
-            await chatContext.Chats.AddAsync(new Chat() {ChatId = chatid,UserId = userid, Private = false});
+            await chatContext.Chats.AddAsync(new Chat() {ChatId = chatid,UserId = userid,Name = name,Private = false});
             return chatid;
         }
 
@@ -34,10 +35,16 @@ namespace Chat_Server.Repository
             throw new Exception("403");
         }
 
-        public async Task<List<Chat>> GetChats(int userid)
+        public async Task<List<RChat>> GetChats(int userid)
         {
             var chats = await chatContext.Chats.Where(c => c.UserId == userid).ToListAsync();
-            return chats;
+            List<RChat> rchats = new List<RChat>();
+            foreach (var chat in chats)
+            {
+                rchats.Add(
+                    new RChat(){ChatId = chat.ChatId,Name = chat.Name,UsersId = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=>x.UserId).ToList(),Private = chat.Private});
+            }
+            return rchats;
         }
 
         public async Task<List<Message>> GetPrivateMessages(int userid, int friendid, int skip = 0, int take = 25)
