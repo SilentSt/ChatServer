@@ -101,12 +101,12 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("deletecard")]
-        public async Task<IActionResult> DeleteCard([FromBody] GBoard board)
+        public async Task<IActionResult> DeleteCard([FromBody] DCard card)
         {
             try
             {
-                if ((await userdata.GetUser(board.token)).Id == 0) return NotFound();
-                await boarddata.DeleteCard(board.boardid);
+                if ((await userdata.GetUser(card.token)).Id == 0) return NotFound();
+                await boarddata.DeleteCard(card.cardid);
                 return Ok();
             }
             catch (Exception e)
