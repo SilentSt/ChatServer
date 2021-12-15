@@ -43,11 +43,11 @@ namespace Chat_Server.Repository
             foreach (var chat in chats)
             {
                 rchats.Add(
-                    new RChat(){ChatId = chat.ChatId,Name = chat.Name,UsersId = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=> new ComUser()
+                    new RChat(){chatid = chat.ChatId,name = chat.Name,users = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=> new ComUser()
                     {
                         nick = chatContext.Users.First(t => t.Id == x.Id).NickName,
                         id = x.UserId
-                    }).ToList(),Private = chat.Private});
+                    }).ToList(),priv = chat.Private});
             }
             return rchats;
         }

@@ -2,9 +2,9 @@
 {
     public class RChat
     {
-        public long ChatId { get; set; }
-        public string? Name { get; set; }
-        public List<ComUser> UsersId { get; set; }
-        public bool Private { get; set; }
+        public long chatid { get; set; }
+        public string? name { get; set; }
+        public List<ComUser> users { get; set; }
+        public bool priv { get; set; }
     }
 }
