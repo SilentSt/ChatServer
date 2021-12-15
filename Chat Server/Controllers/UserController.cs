@@ -98,7 +98,7 @@ namespace Chat_Server.Controllers
                 var user = await userdata.GetUser(token);
                 if (user.Id == 0) return NotFound();
                 var company = await userdata.GetUserBoards(user.Id);
-                return new ContentResult() { Content = JArray.FromObject(company).ToString(), StatusCode = 200 };
+                return new ContentResult() { Content = JArray.FromObject(company).ToString().ToLower(), StatusCode = 200 };
             }
             catch (Exception e)
             {
