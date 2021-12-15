@@ -61,11 +61,22 @@ namespace Chat_Server.Repository
             return await messages.ToListAsync();
         }
 
+        public async Task AddUserToChat(int userid, long chatid)
+        {
+            var chatname = await GetChatName(chatid);
+            await chatContext.Chats.AddAsync(new Chat() { ChatId = chatid, UserId = userid, Private = false, Name = chatname});
+        }
+
         public async Task SendMessage(int fromid, int toid, string text, string? reply = null)
         {
             await chatContext.History.AddAsync(new Message()
                 { FromId = fromid, ChatId = toid, UtcTime = DateTime.UtcNow, Reply = reply });
             await chatContext.SaveChangesAsync();
+        }
+
+        private async Task<string?> GetChatName(long id)
+        {
+            return (await chatContext.Chats.FirstOrDefaultAsync(x => x.ChatId == id)).Name;
         }
     }
 }

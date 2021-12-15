@@ -80,6 +80,23 @@ namespace Chat_Server.Controllers
 
         }
 
+        [HttpPost("addusertochat")]
+        public async Task<IActionResult> AddUserToChat([FromBody] AChat chat)
+        {
+            try
+            {
+                if ((await userdata.GetUser(chat.token)).Id == 0) return NotFound();
+                await messagedata.AddUserToChat(chat.userid, chat.chatid);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
+        }
+
         [HttpPost("userchats")]
         public async Task<IActionResult> Chats([FromBody] string token)
         {

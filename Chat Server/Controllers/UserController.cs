@@ -33,7 +33,7 @@ namespace Chat_Server.Controllers
                 {
                     var token = Generator.GenerateToken();
                     await userdata.AddToken(user, token);
-                    var log = new Login() { nickname = user.NickName, token = token };
+                    var log = new Login() { id=user.Id, nickname = user.NickName, token = token };
                     return new ContentResult() { Content = JObject.FromObject(log).ToString(), StatusCode = 200 };
                 }
                 return NotFound();
