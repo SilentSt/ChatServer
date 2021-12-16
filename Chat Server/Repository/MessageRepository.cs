@@ -15,6 +15,7 @@ namespace Chat_Server.Repository
         {
             var chatid = Generator.Generate64Id();
             await chatContext.Chats.AddAsync(new Chat() {ChatId = chatid,UserId = userid,Name = name,Private = false});
+            await chatContext.SaveChangesAsync();
             return chatid;
         }
 
@@ -23,6 +24,7 @@ namespace Chat_Server.Repository
             var chatid = Generator.Generate64Id();
             await chatContext.Chats.AddAsync(new Chat() { ChatId = chatid, UserId = userid, Private = true });
             await chatContext.Chats.AddAsync(new Chat() { ChatId = chatid, UserId = friendid, Private = true });
+            await chatContext.SaveChangesAsync();
             return chatid;
         }
 
