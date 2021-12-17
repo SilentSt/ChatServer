@@ -11,10 +11,13 @@ namespace ChatRepository
     public class Company
     {
         [Key]
+        [JsonProperty("id")]
         public long Id { get; set; }
+        [JsonProperty("name")]
         public string Name { get; set; }
         [JsonIgnore]
         public virtual List<User> Users { get; set; }
+        [JsonProperty("boards")]
         public virtual List<Board> Boards { get; set; }
     }
 }

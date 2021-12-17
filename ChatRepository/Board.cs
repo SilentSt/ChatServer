@@ -12,14 +12,19 @@ namespace ChatRepository
     public class Board
     {
         [Key]
+        [JsonProperty("id")]
         public long Id { get; set; }
+        [JsonProperty("title")]
         public string Title { get; set; }
+        [JsonProperty("companyid")]
         public long? CompanyId { get; set; }
         [JsonIgnore]
         public Company Company { get; set; }
+        [JsonProperty("userid")]
         public int? UserId { get; set; }
         [JsonIgnore]
         public User User { get; set; }
+        [JsonProperty("cards")]
         public virtual List<Card> Cards { get; set; }
     }
 }
