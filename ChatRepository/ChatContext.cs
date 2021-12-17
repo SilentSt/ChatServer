@@ -13,13 +13,10 @@ namespace ChatRepository
 
         public async Task Reload()
         {
-            await Entry(Chats.EntityType).ReloadAsync();
-            await Entry(History.EntityType).ReloadAsync();
-            await Entry(Companys.EntityType).ReloadAsync();
-            await Entry(Boards.EntityType).ReloadAsync();
-            await Entry(Cards.EntityType).ReloadAsync();
-            await Entry(Users.EntityType).ReloadAsync();
-            await Entry(Tokens.EntityType).ReloadAsync();
+            foreach (var entityEntry in ChangeTracker.Entries())
+            {
+                await entityEntry.ReloadAsync();
+            }
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Message> History { get; set; }
