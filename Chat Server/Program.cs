@@ -9,9 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<UserRepository>();
-builder.Services.AddSingleton<MessageRepository>();
-builder.Services.AddSingleton<BoardRepository>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<MessageRepository>();
+builder.Services.AddScoped<BoardRepository>();
 builder.Services.AddScoped<ChatContext>();
 //builder.Host.ConfigureWebHost(c => c.UseUrls("https://176.212.39.172:25565"));
 
