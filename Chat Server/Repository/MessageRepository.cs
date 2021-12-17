@@ -30,6 +30,7 @@ namespace Chat_Server.Repository
 
         public async Task<List<Message>> GetChatMessages(int userid, int chatid, int skip = 0, int take = 25)
         {
+            await chatContext.Reload();
             if (chatContext.Chats.Any(c => c.UserId == userid && c.ChatId == chatid))
             {
                 var messages = await chatContext.History.Where(c => c.ChatId == chatid).ToListAsync();
@@ -40,6 +41,7 @@ namespace Chat_Server.Repository
 
         public async Task<List<UserChats>> GetChats(int userid)
         {
+            await chatContext.Reload();
             var chats = await chatContext.Chats.Where(c => c.UserId == userid).ToListAsync();
             List<UserChats> rchats = new List<UserChats>();
             foreach (var chat in chats)
@@ -56,6 +58,7 @@ namespace Chat_Server.Repository
 
         public async Task<List<Message>> GetPrivateMessages(int userid, int friendid, int skip = 0, int take = 25)
         {
+            await chatContext.Reload();
             var id = chatContext.Chats.Where(ch => ch.UserId == userid && ch.Private);
             var chatid =
                 (await chatContext.Chats.FirstOrDefaultAsync(c => id.Any(x => x.ChatId == c.ChatId) && c.UserId == friendid)).ChatId;
@@ -79,6 +82,7 @@ namespace Chat_Server.Repository
 
         private async Task<string?> GetChatName(long id)
         {
+            await chatContext.Reload();
             return (await chatContext.Chats.FirstOrDefaultAsync(x => x.ChatId == id)).Name;
         }
     }

@@ -10,6 +10,7 @@ namespace Chat_Server.Repository
         ChatContext chatContext = new ();
         public async Task<Board> GetBoard(long id)
         {
+            await chatContext.Reload();
             var board = await chatContext.Boards.Include("Cards").FirstOrDefaultAsync(x => x.Id == id);
             if (board == null)
             {
@@ -78,6 +79,7 @@ namespace Chat_Server.Repository
 
         public async Task<Card> GetCard(long id)
         {
+            await chatContext.Reload();
             var card = await chatContext.Cards.FirstOrDefaultAsync(x => x.Id == id);
             if (card == null)
             {

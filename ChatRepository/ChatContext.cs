@@ -11,6 +11,16 @@ namespace ChatRepository
             base.OnConfiguring(optionsBuilder);
         }
 
+        public async Task Reload()
+        {
+            await Entry(typeof(Chat)).ReloadAsync();
+            await Entry(typeof(Message)).ReloadAsync();
+            await Entry(typeof(Company)).ReloadAsync();
+            await Entry(typeof(Board)).ReloadAsync();
+            await Entry(typeof(Card)).ReloadAsync();
+            await Entry(typeof(User)).ReloadAsync();
+            await Entry(typeof(Tokens)).ReloadAsync();
+        }
         public DbSet<User> Users { get; set; }
         public DbSet<Message> History { get; set; }
         public DbSet<Tokens> Tokens { get; set; }
