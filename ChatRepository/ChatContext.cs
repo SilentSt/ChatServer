@@ -13,13 +13,13 @@ namespace ChatRepository
 
         public async Task Reload()
         {
-            await Entry(typeof(Chat)).ReloadAsync();
-            await Entry(typeof(Message)).ReloadAsync();
-            await Entry(typeof(Company)).ReloadAsync();
-            await Entry(typeof(Board)).ReloadAsync();
-            await Entry(typeof(Card)).ReloadAsync();
-            await Entry(typeof(User)).ReloadAsync();
-            await Entry(typeof(Tokens)).ReloadAsync();
+            await Entry(nameof(Chat)).ReloadAsync();
+            await Entry(nameof(Message)).ReloadAsync();
+            await Entry(nameof(Company)).ReloadAsync();
+            await Entry(nameof(Board)).ReloadAsync();
+            await Entry(nameof(Card)).ReloadAsync();
+            await Entry(nameof(User)).ReloadAsync();
+            await Entry(nameof(Tokens)).ReloadAsync();
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Message> History { get; set; }
