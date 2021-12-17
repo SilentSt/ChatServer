@@ -9,23 +9,22 @@ namespace Chat_Server.Repository
 {
     public class UserRepository : IUserRepository
     {
-        ChatContext chatContext = new();
-        public UserRepository()
+        ChatContext chatContext;
+        public UserRepository(ChatContext chat)
         {
+            chatContext = chat;
             chatContext.Database.EnsureCreated();
             
         }
 
         public async Task AddToken(User user, string token)
         {
-            await chatContext.Reload();
             await chatContext.Tokens.AddAsync(new Tokens() { Token = token, UserId = user.Id });
             await chatContext.SaveChangesAsync();
         }
 
         public async Task AddToken(int userid, string token)
         {
-            await chatContext.Reload();
             var user = await GetUser(userid);
             await chatContext.Tokens.AddAsync(new Tokens() { Token = token, UserId = user.Id });
             await chatContext.SaveChangesAsync();
@@ -33,21 +32,18 @@ namespace Chat_Server.Repository
 
         public async Task<User> FindUser(string nickname)
         {
-            await chatContext.Reload();
             var user = await chatContext.Users.FirstOrDefaultAsync(u => u.NickName.Contains(nickname));
             return user ?? new User() { Id = 0 };
         }
 
         public async Task<List<User>> FindUsers(string nickname)
         {
-            await chatContext.Reload();
             var users = await chatContext.Users.Where(u => u.NickName.Contains(nickname)).ToListAsync();
             return users;
         }
 
         public async Task<List<Board>> GetUserBoards(int id)
         {
-            await chatContext.Reload();
             var boards = await chatContext.Boards.Include("Cards").Where(b => b.UserId == id).ToListAsync();
             return boards;
         }
@@ -56,7 +52,6 @@ namespace Chat_Server.Repository
         {
             if (id < 0)
             {
-                await chatContext.Reload();
                 var users = await chatContext.Users.Where(c => c.CompanyId == id).ToListAsync();
                 return users;
             }
@@ -66,27 +61,24 @@ namespace Chat_Server.Repository
         public async Task<Company> GetFullCompany(long id)
         {
             if (id > 0) throw new Exception("403");
-            await chatContext.Reload();
+            
             var company = await chatContext.Companys.Include("Boards").Include("Boards.Cards").FirstOrDefaultAsync(c => c.Id == id);
             return company;
         }
 
         public async Task<User> GetUser(int id)
         {
-            await chatContext.Reload();
             var user = await chatContext.Users.FirstOrDefaultAsync(u => u.Id == id);
             return user ?? new User() { Id = 0 };
         }
         public async Task<User> GetUser(string token)
         {
-            await chatContext.Reload();
             var user = await chatContext.Users.FirstOrDefaultAsync(x => x.Tokens.Any(y => y.Token == token));
             return user ?? new User() { Id = 0 };
         }
 
         public async Task<User> Login(string username, string password)
         {
-            await chatContext.Reload();
             var user = await chatContext.Users.FirstOrDefaultAsync(u => u.Login == username && u.CompanyId < 0 && u.Password == password);
             return user ?? new User() { Id = 0 };
         }
