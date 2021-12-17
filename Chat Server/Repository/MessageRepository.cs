@@ -69,11 +69,12 @@ namespace Chat_Server.Repository
             await chatContext.Chats.AddAsync(new Chat() { ChatId = chatid, UserId = userid, Private = false, Name = chatname});
         }
 
-        public async Task SendMessage(int fromid, int toid, string text, string? reply = null)
+        public async Task<int> SendMessage(int fromid, int toid, string text, string? reply = null)
         {
-            await chatContext.History.AddAsync(new Message()
+            var message = await chatContext.History.AddAsync(new Message()
                 { FromId = fromid, ChatId = toid, UtcTime = DateTime.UtcNow, Reply = reply });
             await chatContext.SaveChangesAsync();
+            return message.Entity.Id;
         }
 
         private async Task<string?> GetChatName(long id)

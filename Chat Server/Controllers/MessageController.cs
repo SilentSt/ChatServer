@@ -30,8 +30,8 @@ namespace Chat_Server.Controllers
             {
                 if ((await userdata.GetUser(message.token)).Id == 0) return NotFound();
                 var user = userdata.GetUser(message.token);
-                await messagedata.SendMessage(user.Id, message.toid, message.text, message.reply);
-                return Ok();
+                var messageId = await messagedata.SendMessage(user.Id, message.toid, message.text, message.reply);
+                return new ContentResult(){Content = messageId.ToString(),StatusCode = 200};
             }
             catch (Exception e)
             {
