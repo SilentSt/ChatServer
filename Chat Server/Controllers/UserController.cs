@@ -1,6 +1,7 @@
 ﻿using System.Text.Json.Nodes;
 
 using Chat_Server.BModels;
+using Chat_Server.BModels.kostyl;
 using Chat_Server.Repository;
 using Chat_Server.Repository.Interface;
 using Chat_Server.Service;
@@ -47,11 +48,11 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("companyusers")]
-        public async Task<IActionResult> Company([FromBody] string token)
+        public async Task<IActionResult> Company([FromBody] Token token)
         {
             try
             {
-                var user = await userdata.GetUser(token);
+                var user = await userdata.GetUser(token.ToString());
                 if (user.Id == 0) return NotFound();
                 var users = await userdata.GetCompanyUsers(user.CompanyId);
                 List<ComUser> usersList = new List<ComUser>();
@@ -73,11 +74,11 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("fullcompany")]
-        public async Task<IActionResult> FullCompany([FromBody] string token)
+        public async Task<IActionResult> FullCompany([FromBody] Token token)
         {
             try
             {
-                var user = await userdata.GetUser(token);
+                var user = await userdata.GetUser(token.ToString());
                 if (user.Id == 0) return NotFound();
                 var company = await userdata.GetFullCompany(user.CompanyId);
                 return new ContentResult() { Content = JObject.FromObject(company).ToString(), StatusCode = 200 };
@@ -91,11 +92,11 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("userboards")]
-        public async Task<IActionResult> UserBoards([FromBody] string token)
+        public async Task<IActionResult> UserBoards([FromBody] Token token)
         {
             try
             {
-                var user = await userdata.GetUser(token);
+                var user = await userdata.GetUser(token.ToString());
                 if (user.Id == 0) return NotFound();
                 var company = await userdata.GetUserBoards(user.Id);
                 return new ContentResult() { Content = JArray.FromObject(company).ToString(), StatusCode = 200 };
