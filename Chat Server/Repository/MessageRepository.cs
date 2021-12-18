@@ -80,6 +80,7 @@ namespace Chat_Server.Repository
         {
             var chatname = await GetChatName(chatid);
             await chatContext.Chats.AddAsync(new Chat() { ChatId = chatid, UserId = userid, Private = false, Name = chatname });
+            await chatContext.SaveChangesAsync();
         }
 
         public async Task<int> SendMessage(int fromid, long toid, string text, string? reply = null)
