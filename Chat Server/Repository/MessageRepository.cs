@@ -52,7 +52,7 @@ namespace Chat_Server.Repository
                 rchats.Add(
                     new UserChats(){chatid = chat.ChatId,name = chat.Name,users = chatContext.Chats.Where(g=>g.ChatId==chat.ChatId).Select(x=> new ComUser()
                     {
-                        nick = chatContext.Users.First(t => t.Id == x.Id).NickName,
+                        nick = chatContext.Users.First(t => t.Id == x.UserId).NickName,
                         id = x.UserId
                     }).ToList(),priv = chat.Private});
             }
