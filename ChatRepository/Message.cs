@@ -21,6 +21,9 @@ namespace ChatRepository
         [JsonProperty("chatid")]
         public int ChatId { get; set; }
         [Required]
+        [JsonProperty("text")]
+        public string Text { get; set; }
+        [Required]
         [JsonProperty("utctime")]
         public DateTime UtcTime { get; set; }
         [JsonProperty("reply")]
