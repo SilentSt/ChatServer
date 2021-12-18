@@ -44,7 +44,11 @@ namespace Chat_Server.Repository
 
         public async Task<List<Board>> GetUserBoards(int id)
         {
-            var boards = await chatContext.Boards.Include("Cards").Where(b => b.UserId == id).ToListAsync();
+            var boards = await chatContext.Boards.Include(x=>x.Cards).Where(b => b.UserId == id).ToListAsync();
+            boards.ForEach(x =>
+            {
+                x.Cards = x.Cards.OrderBy(f => f.Deadline).ToList();
+            });
             return boards;
         }
 
@@ -62,7 +66,11 @@ namespace Chat_Server.Repository
         {
             if (id > 0) throw new Exception("403");
             
-            var company = await chatContext.Companys.Include("Boards").Include("Boards.Cards").FirstOrDefaultAsync(c => c.Id == id);
+            var company = await chatContext.Companys.Include(x=>x.Boards).Include("Boards.Cards").FirstOrDefaultAsync(c => c.Id == id);
+            company.Boards.ForEach(x =>
+            {
+                x.Cards = x.Cards.OrderBy(f => f.Deadline).ToList();
+            });
             return company;
         }
 

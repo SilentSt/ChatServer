@@ -37,7 +37,7 @@ namespace Chat_Server.Repository
         {
             if (chatContext.Chats.Any(c => c.UserId == userid && c.ChatId == chatid))
             {
-                var messages = await chatContext.History.Where(c => c.ChatId == chatid).ToListAsync();
+                var messages = await chatContext.History.Where(c => c.ChatId == chatid).OrderBy(f=>f.UtcTime).ToListAsync();
                 return messages;
             }
             throw new Exception("403");
