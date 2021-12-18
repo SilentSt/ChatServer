@@ -7,7 +7,7 @@ namespace Chat_Server.BModels
         [JsonRequired]
         public string token { get; set; }
         [JsonRequired]
-        public int toid { get; set; }
+        public long toid { get; set; }
         [JsonRequired]
         public string text { get; set; }
         public string? reply { get; set; }

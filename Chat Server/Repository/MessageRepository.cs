@@ -82,7 +82,7 @@ namespace Chat_Server.Repository
             await chatContext.Chats.AddAsync(new Chat() { ChatId = chatid, UserId = userid, Private = false, Name = chatname });
         }
 
-        public async Task<int> SendMessage(int fromid, int toid, string text, string? reply = null)
+        public async Task<int> SendMessage(int fromid, long toid, string text, string? reply = null)
         {
             var message = await chatContext.History.AddAsync(new Message()
             { FromId = fromid, ChatId = toid,Text = text, UtcTime = DateTime.UtcNow, Reply = reply });
