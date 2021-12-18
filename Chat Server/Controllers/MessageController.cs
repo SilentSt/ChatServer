@@ -105,7 +105,7 @@ namespace Chat_Server.Controllers
             {
                 var user = await userdata.GetUser(token.ToString());
                 if (user.Id == 0) return NotFound();
-                var chats = messagedata.GetChats(user.Id);
+                var chats = await messagedata.GetChats(user.Id);
                 return new ContentResult { Content = JArray.FromObject(chats).ToString(), StatusCode = 200 };
 
             }
