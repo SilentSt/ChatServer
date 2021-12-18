@@ -5,6 +5,8 @@ using Chat_Server.Service;
 using ChatRepository;
 using Microsoft.EntityFrameworkCore;
 
+using System.Linq;
+
 namespace Chat_Server.Repository
 {
     public class MessageRepository : IMessageRepository
@@ -62,9 +64,11 @@ namespace Chat_Server.Repository
         public async Task<List<Message>> GetPrivateMessages(int userid, int friendid, int skip = 0, int take = 25)
         {
             var id = chatContext.Chats.Where(ch => ch.UserId == userid && ch.Private);
-            var chatid =
-                (await chatContext.Chats.FirstOrDefaultAsync(c => id.Any(x => x.ChatId == c.ChatId) && c.UserId == friendid)).ChatId;
-            var messages = chatContext.History.Where(y => y.ChatId == chatid).Skip(skip).Take(take);
+
+            var chats = chatContext.Chats.Where(x => id.Any(f=>f.ChatId==x.ChatId));
+            var chat =(await chats.FirstOrDefaultAsync(x => x.UserId == friendid)).ChatId;
+                //(await chatContext.Chats.FirstOrDefaultAsync(c => id.Any(x => x.ChatId == c.ChatId) && c.UserId == friendid)).ChatId;
+            var messages = chatContext.History.Where(y => y.ChatId == chat).Skip(skip).Take(take);
             return await messages.ToListAsync();
         }
 
