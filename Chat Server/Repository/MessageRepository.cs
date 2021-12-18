@@ -70,9 +70,8 @@ namespace Chat_Server.Repository
 
         public async Task<List<Message>> GetMessages(int userid, long chatid, int skip = 0, int take = 25)
         {
-            var message = chatContext.History.Where(y => y.ChatId == chatid).Skip(skip).Take(take).ToString();
-            Console.WriteLine(message);
-            var messages = chatContext.History.Where(y => y.ChatId == chatid).Skip(skip).Take(take);
+            
+            var messages = chatContext.History.Where(y => y.ChatId == chatid).Take(take);
            
             return await messages.ToListAsync();
         }
