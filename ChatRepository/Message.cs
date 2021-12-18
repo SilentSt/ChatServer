@@ -19,7 +19,7 @@ namespace ChatRepository
         public int FromId { get; set; }
         [Required]
         [JsonProperty("chatid")]
-        public int ChatId { get; set; }
+        public long ChatId { get; set; }
         [Required]
         [JsonProperty("text")]
         public string Text { get; set; }
