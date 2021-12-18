@@ -127,21 +127,21 @@ namespace Chat_Server.Controllers
                 List<Message> messages;
                 if (data.skip != null && data.take != null)
                 {
-                    messages = await messagedata.GetPrivateMessages(user.Id, data.id, (int)data.skip, (int)data.take);
+                    messages = await messagedata.GetMessages(user.Id, data.chatid, (int)data.skip, (int)data.take);
                 }
                 else
                 if (data.skip != null)
                 {
-                    messages = await messagedata.GetPrivateMessages(user.Id, data.id, (int)data.skip);
+                    messages = await messagedata.GetMessages(user.Id, data.chatid, (int)data.skip);
                 }
                 else
                 if (data.take != null)
                 {
-                    messages = await messagedata.GetPrivateMessages(user.Id, data.id, take: (int)data.take);
+                    messages = await messagedata.GetMessages(user.Id, data.chatid, take: (int)data.take);
                 }
                 else
                 {
-                    messages = await messagedata.GetPrivateMessages(user.Id, data.id);
+                    messages = await messagedata.GetMessages(user.Id, data.chatid);
                 }
 
                 return new ContentResult { Content = JArray.FromObject(messages).ToString(), StatusCode = 200 };
