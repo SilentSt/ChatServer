@@ -30,7 +30,7 @@ namespace Chat_Server.Controllers
             try
             {
                 if ((await userdata.GetUser(message.token)).Id == 0) return NotFound();
-                var user = userdata.GetUser(message.token);
+                var user = await userdata.GetUser(message.token);
                 var messageId = await messagedata.SendMessage(user.Id, message.toid, message.text, message.reply);
                 return new ContentResult(){Content = messageId.ToString(),StatusCode = 200};
             }
@@ -120,8 +120,8 @@ namespace Chat_Server.Controllers
         [HttpPost("history")]
         public async Task<IActionResult> GetHistory([FromBody] GetHistory data)
         {
-            //try
-            //{
+            try
+            {
                 if ((await userdata.GetUser(data.token)).Id == 0) return NotFound();
                 var user = userdata.GetUser(data.token);
                 List<Message> messages;
@@ -146,13 +146,13 @@ namespace Chat_Server.Controllers
 
                 return new ContentResult { Content = JArray.FromObject(messages).ToString(), StatusCode = 200 };
 
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.ToString());
-            //    Console.WriteLine(e.Message);
-            //    return BadRequest();
-            //}
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
         }
     }
 }
