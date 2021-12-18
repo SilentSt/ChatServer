@@ -1,4 +1,5 @@
 using Chat_Server.BModels;
+using Chat_Server.BModels.kostyl;
 using Chat_Server.BModels.Message;
 using Chat_Server.Repository;
 using Chat_Server.Repository.Interface;
@@ -98,11 +99,11 @@ namespace Chat_Server.Controllers
         }
 
         [HttpPost("userchats")]
-        public async Task<IActionResult> Chats([FromBody] string token)
+        public async Task<IActionResult> Chats([FromBody] Token token)
         {
             try
             {
-                var user = await userdata.GetUser(token);
+                var user = await userdata.GetUser(token.ToString());
                 if (user.Id == 0) return NotFound();
                 var chats = messagedata.GetChats(user.Id);
                 return new ContentResult { Content = JArray.FromObject(chats).ToString(), StatusCode = 200 };
