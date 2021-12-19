@@ -144,7 +144,7 @@ namespace Chat_Server.Controllers
                     messages = await messagedata.GetMessages(user.Id, data.chatid);
                 }
 
-                return new ContentResult { Content = JArray.FromObject(messages).ToString(), StatusCode = 200 };
+                return new ContentResult { Content = JArray.FromObject(messages.OrderBy(x=>x.UtcTime)).ToString(), StatusCode = 200 };
 
             }
             catch (Exception e)

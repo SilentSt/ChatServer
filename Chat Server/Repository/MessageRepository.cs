@@ -71,7 +71,7 @@ namespace Chat_Server.Repository
         public async Task<List<Message>> GetMessages(int userid, long chatid, int skip = 0, int take = 25)
         {
             
-            var messages = chatContext.History.Where(y => y.ChatId == chatid).Skip(skip).Take(take);
+            var messages = chatContext.History.Where(y => y.ChatId == chatid).OrderByDescending(d=>d.UtcTime).Skip(skip).Take(take);
            
             return await messages.ToListAsync();
         }
