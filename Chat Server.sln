@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat Server", "Chat Server\Chat Server.csproj", "{706D04C1-AFDF-4A97-A8A5-145039010928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatRepository", "ChatRepository\ChatRepository.csproj", "{EB40EFEC-AA66-4492-9B80-F6625D50BCEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatRepository", "ChatRepository\ChatRepository.csproj", "{EB40EFEC-AA66-4492-9B80-F6625D50BCEC}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{231915E8-DDA5-40FC-9510-D92349425C43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EB40EFEC-AA66-4492-9B80-F6625D50BCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB40EFEC-AA66-4492-9B80-F6625D50BCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB40EFEC-AA66-4492-9B80-F6625D50BCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{231915E8-DDA5-40FC-9510-D92349425C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{231915E8-DDA5-40FC-9510-D92349425C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{231915E8-DDA5-40FC-9510-D92349425C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{231915E8-DDA5-40FC-9510-D92349425C43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

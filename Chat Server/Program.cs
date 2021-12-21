@@ -13,16 +13,16 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<MessageRepository>();
 builder.Services.AddScoped<BoardRepository>();
 builder.Services.AddScoped<ChatContext>();
-//builder.Host.ConfigureWebHost(c => c.UseUrls("https://176.212.39.172:25565"));
 
 var app = builder.Build();
-app.Urls.Add("https://localhost:14875");
+//app.Urls.Add("https://0.0.0.0");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

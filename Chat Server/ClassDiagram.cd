@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Chat_Server.BModels.Auth">
+    <Position X="13" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAA=</HashCode>
+      <FileName>BModels\Company\Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.Controllers.BoardController">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAgAAAAAAAAAQAAAAAUAAACAAAAgAAAAAAQAA=</HashCode>
+      <FileName>Controllers\BoardController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.Controllers.MessageController">
+    <Position X="2.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAABAAAAAAQAAAiACAAAAAEAIAAAAAA=</HashCode>
+      <FileName>Controllers\MessageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.Controllers.UserController">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAABAAAAACAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.Repository.BoardRepository" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAgAAABAAAAAAAAAAAUAACAAAAAgAAAAAAQAA=</HashCode>
+      <FileName>Repository\BoardRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Chat_Server.Repository.MessageRepository" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAkAAAAAABAAAACAAAAAAAACQEAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Repository\MessageRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Chat_Server.Repository.UserRepository" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAEAAAAAABAAAAAAABAAAAAAAAAAAUAAQAAAAIAA=</HashCode>
+      <FileName>Repository\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Chat_Server.Service.Generator">
+    <Position X="2.25" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Service\Generator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Company">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Company\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.ComUser">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAgA=</HashCode>
+      <FileName>BModels\Company\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Login">
+    <Position X="16.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwA=</HashCode>
+      <FileName>BModels\Company\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.CreateMessage">
+    <Position X="15" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAABAACAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Message\CreateMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.GetHistory">
+    <Position X="15" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAABAAA=</HashCode>
+      <FileName>BModels\Message\GetHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.CreateBoard">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>BModels\Boards\CreateBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.CreateCard">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAAIACAAAAAAAAAAAAEAAAAAAABAAA=</HashCode>
+      <FileName>BModels\Boards\CreateCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.DeleteCard">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Boards\DeleteCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.GetBoard">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Boards\GetBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.UpdateBoard">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Boards\UpdateBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.UpdateCard">
+    <Position X="15" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAQAAAAAAgIAAAAAAAAAAAAAAEAAAAAAABAAA=</HashCode>
+      <FileName>BModels\Boards\UpdateCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Boards.UserChats">
+    <Position X="16.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAABAAAAAAAA=</HashCode>
+      <FileName>BModels\Message\UserChats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.kostyl.Token">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\kostyl\Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Message.AddUserToChat">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Message\AddUserToChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Message.CreateChat">
+    <Position X="13.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BModels\Message\CreateChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chat_Server.BModels.Message.CreatePrivateChat">
+    <Position X="16.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>BModels\Message\CreatePrivateChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Chat_Server.Repository.Interface.IBoardRepository">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAgAAAAAAAAAAAAAAAUAACAAAAAgAAAAAAQAA=</HashCode>
+      <FileName>Repository\Interface\IBoardRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Chat_Server.Repository.Interface.IMessageRepository">
+    <Position X="7.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAACAAAAAAAACQEAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Repository\Interface\IMessageRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Chat_Server.Repository.Interface.IUserRepository">
+    <Position X="5.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAEAAAAAAAAAAAAAABAAAAAAAAAAAUAAQAAAAIAA=</HashCode>
+      <FileName>Repository\Interface\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
