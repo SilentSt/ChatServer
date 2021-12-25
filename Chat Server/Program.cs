@@ -15,7 +15,7 @@ builder.Services.AddScoped<BoardRepository>();
 builder.Services.AddScoped<ChatContext>();
 
 var app = builder.Build();
-//app.Urls.Add("https://0.0.0.0");
+app.Urls.Add("https://0.0.0.0");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

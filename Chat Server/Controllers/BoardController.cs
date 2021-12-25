@@ -48,7 +48,7 @@ namespace Chat_Server.Controllers
     }
 
     [HttpPost("getboard")]
-    public async Task<IActionResult> GetBoard(GetBoard board)
+    public async Task<IActionResult> GetBoard([FromBody]GetBoard board)
     {
       try
       {
